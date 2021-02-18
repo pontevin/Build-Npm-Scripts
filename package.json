@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "clean": "rm -r dist",
     "scss": "node-sass -o dist/css assets/scss/style.scss",
     "concat:css": "concat -o dist/css/styles.css dist/css/style.css assets/css/test.css",
     "concat:js": "mkdir -p dist/js && concat -o dist/js/scripts.js assets/js/test1.js assets/js/test2.js",
@@ -14,7 +15,7 @@
     "build:js": "npm run concat:js && npm run uglify",
     "build:img": "npm run imagemin",
     "build": "npm run build:css && npm run build:js && npm run build:img",
-    "watch:css": "onchange 'assets/scss/*.scss' -- npm run build:css",
+    "watch:css": "onchange 'assets/scss/*.scss' 'assets/css/*.css' -- npm run build:css",
     "watch:js": "onchange 'assets/js/*.js' -- npm run build:js",
     "watch": "npm-run-all --parallel watch:*"
   },
